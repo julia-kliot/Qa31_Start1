@@ -33,6 +33,10 @@ public class Test_1 {
             //WebElement partLink = wd.findElement(By.partialLinkText("Sign"));
             List<WebElement> ael= wd.findElements(By.tagName("a"));
             System.out.println(ael.size());
+             WebElement eln= wd.findElement(By.tagName("input"));
+             eln.click();
+             eln.clear();
+             eln.sendKeys("juliakliot.jk@gmail.com");
 
         }
 
