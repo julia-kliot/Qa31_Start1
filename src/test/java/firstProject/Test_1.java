@@ -28,19 +28,51 @@ public class Test_1 {
         public void testNew() {
             //WebElement el = wd.findElement(By.tagName("a"));
             WebElement el2 = wd.findElement(By.tagName("div"));
-           // WebElement el3 = wd.findElement(By.className("btn btn-sm btn-link"));
-            // WebElement link = wd.findElement(By.linkText("Sign Up"));
+            WebElement el22 = wd.findElement(By.cssSelector("div"));
+
+            WebElement el4 = wd.findElement(By.id("hero"));
+            WebElement el44 = wd.findElement(By.cssSelector("#hero"));
+
+            WebElement el3 = wd.findElement(By.className("font-weight-bold"));
+            WebElement el33 = wd.findElement(By.cssSelector(".font-weight-bold"));
+
+            WebElement link = wd.findElement(By.linkText("Sign Up"));
+            WebElement link2 = wd.findElement(By.cssSelector("[href='/login']"));
             //WebElement partLink = wd.findElement(By.partialLinkText("Sign"));
+        }
+          @Test
+                  public void  test2(){
             List<WebElement> ael= wd.findElements(By.tagName("a"));
             System.out.println(ael.size());
-             WebElement eln= wd.findElement(By.tagName("input"));
-             eln.click();
-             eln.clear();
-             eln.sendKeys("juliakliot.jk@gmail.com");
 
         }
 
-        @AfterMethod
+        @Test
+        public void  enterEmail(){
+            WebElement eln= wd.findElement(By.cssSelector("input[name='email']"));
+            type(eln, "juliakliot.jk@gmail.com");
+
+        }
+    @Test
+    public void  enterEmailWithoutCom(){
+        WebElement eln= wd.findElement(By.cssSelector("input[name='email']"));
+        type(eln, "juliakliot.jk@gmail");
+
+    }
+    @Test
+    public void  enterEmailNeg2(){
+        WebElement eln= wd.findElement(By.cssSelector("input[name='email']"));
+        type(eln, "juliakliot.jkgmail.com");
+
+    }
+
+    public void type(WebElement eln, String email) {
+        eln.click();
+        eln.clear();
+        eln.sendKeys(email);
+    }
+
+    @AfterMethod
     public void close(){
         wd.close();
         wd.quit();
